@@ -11,12 +11,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="./brand.css" />
+    <link rel="stylesheet" href="./conversion.css" />
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
     <header class="topbar">
       <a class="brand" href="https://writercut.com" aria-label="WriterCut home">
-        <img src="./writercut-logo.svg" alt="WriterCut — Where songs find artists" />
+        <img src="./writercut-piano-logo.webp" alt="WriterCut — Where songs find artists" />
       </a>
       <div class="top-actions">
         <span class="test-badge">PRIVATE TEST</span>
@@ -25,14 +26,37 @@
     </header>
 
     <main>
-      <section class="hero">
-        <p class="eyebrow">WHERE SONGS FIND ARTISTS.</p>
-        <h1>You wrote the song. Now let it be heard.</h1>
-        <p class="lede">WriterCut helps songwriters turn original, human-written lyrics and creative direction into a private, AI-assisted demo—up to four minutes—without replacing the songwriter, imitating an artist, or hiding how AI was used in the demo.</p>
-        <div class="hero-chips" aria-label="Demo Builder highlights">
-          <span>Human-written lyrics</span><span>Private output</span><span>Up to 4:00</span><span>Clear AI demo disclosure</span><span>No artist imitation</span>
+      <section class="hero hero-stage">
+        <div class="hero-copy">
+          <p class="eyebrow"><span aria-hidden="true">♫</span> WHERE SONGS FIND ARTISTS.</p>
+          <h1><span class="gold-text">You wrote</span> the song.<br />Now let it <span class="gold-text">be heard.</span></h1>
+          <p class="lede">WriterCut helps songwriters turn original, human-written lyrics and creative direction into a private, AI-assisted demo—up to four minutes—without replacing the songwriter, imitating an artist, or hiding how AI was used in the demo.</p>
+          <div class="hero-actions">
+            <a class="primary hero-cta" href="#authShell">Start your demo</a>
+            <p><strong>One demo: $4.99</strong><span>No subscription. No surprise renewal.</span></p>
+          </div>
+          <div class="hero-chips" aria-label="Demo Builder highlights">
+            <span>Human-written lyrics</span><span>Private output</span><span>Up to 4:00</span><span>AI demo disclosed</span><span>No artist imitation</span>
+          </div>
         </div>
+
+        <aside class="hero-offer" aria-label="Ten demo credit offer">
+          <span class="offer-ribbon">BEST VALUE</span>
+          <p class="offer-kicker">10-DEMO CREDIT PACK</p>
+          <div class="offer-price"><sup>$</sup>39<small>.99</small></div>
+          <p class="offer-subhead">Ten private demos. Four dollars per song. Built to let the writing speak.</p>
+          <div class="offer-pulse"><strong>10</strong><span>SONGS.<br />READY TO BE HEARD.</span></div>
+          <ul>
+            <li>Up to four minutes per demo</li>
+            <li>Credits stay with your WriterCut account</li>
+            <li>Clear AI demo disclosure</li>
+          </ul>
+          <a class="primary offer-cta" href="#authShell">Sign in to get started</a>
+          <small>Purchasing remains locked during protected testing.</small>
+        </aside>
       </section>
+
+      <div class="piano-strike" aria-hidden="true"><span></span></div>
 
       <section class="notice" id="testNotice">
         <strong>Protected test mode.</strong> The interface is live for review; purchasing and music generation stay locked until WriterCut approves activation.
@@ -47,7 +71,7 @@
         <form id="loginForm" class="login-form">
           <label>Email<input id="email" name="email" type="email" autocomplete="email" required /></label>
           <label>Password<input id="password" name="password" type="password" autocomplete="current-password" required minlength="8" /></label>
-          <button class="primary" type="submit">Sign in</button>
+          <button class="primary" type="submit">Enter the Demo Builder</button>
           <p class="form-message" id="loginMessage" role="status"></p>
         </form>
       </section>
