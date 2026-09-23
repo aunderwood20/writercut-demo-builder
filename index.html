@@ -3,32 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="WriterCut connects serious songwriters and approved music-industry professionals." />
+    <meta name="description" content="WriterCut Demo Builder turns original songs into private AI-assisted demos." />
     <meta name="theme-color" content="#070707" />
-    <title>WriterCut — Where Songs Find Artists</title>
+    <title>Demo Builder — WriterCut</title>
     <link rel="icon" type="image/svg+xml" href="./writercut-logo.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script>
+      // The preview hosts the Demo Builder; all other pages use the original WriterCut site.
+      function keepOriginalSite() {
+        const route = location.hash.startsWith("#/") ? location.hash.slice(1) : "/";
+        const pathname = route.split("?")[0];
+        if (pathname !== "/demo-builder" && pathname !== "/login") {
+          document.documentElement.style.visibility = "hidden";
+          location.replace("https://writercut.com" + route);
+        }
+      }
+      keepOriginalSite();
+      addEventListener("hashchange", keepOriginalSite);
+    </script>
     <link rel="stylesheet" href="./unified.css?v=2" />
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
     <header class="site-header">
-      <a class="site-logo" href="#/" aria-label="WriterCut home">
+      <a class="site-logo" href="https://writercut.com/" aria-label="WriterCut home">
         <img src="./writercut-piano-logo.webp" alt="WriterCut" />
       </a>
       <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteNav">Menu</button>
       <nav class="site-nav" id="siteNav" aria-label="Primary navigation">
-        <a href="#/for-writers">For Writers</a>
-        <a href="#/for-industry">For Industry</a>
-        <a href="#/how-it-works">The Rule of 10</a>
-        <a href="#/pricing">Pricing</a>
+        <a href="https://writercut.com/for-writers">For Writers</a>
+        <a href="https://writercut.com/for-industry">For Industry</a>
+        <a href="https://writercut.com/how-it-works">The Rule of 10</a>
+        <a href="https://writercut.com/pricing">Pricing</a>
         <a href="#/demo-builder" class="nav-demo">Demo Builder</a>
       </nav>
       <div class="header-actions" id="headerActions">
         <a class="button button-ghost" href="#/login">Sign in</a>
-        <a class="button button-gold" href="#/signup?type=writer">Join free</a>
+        <a class="button button-gold" href="https://writercut.com/signup?type=writer">Join free</a>
       </div>
     </header>
 
@@ -43,9 +56,9 @@
         <a href="#/for-writers">Songwriters</a>
         <a href="#/for-industry">Industry</a>
         <a href="#/demo-builder">Demo Builder</a>
-        <a href="#/terms">Terms</a>
-        <a href="#/privacy">Privacy</a>
-        <a href="#/dmca">DMCA</a>
+        <a href="https://writercut.com/terms">Terms</a>
+        <a href="https://writercut.com/privacy">Privacy</a>
+        <a href="https://writercut.com/dmca">DMCA</a>
       </div>
       <p>© <span id="copyrightYear"></span> WriterCut. Human songs. Honest demos.</p>
     </footer>
