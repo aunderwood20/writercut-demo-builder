@@ -433,7 +433,7 @@ textarea { resize: vertical; }
 .footer-brand { display: flex; align-items: center; gap: 12px; }
 .music-key { display: grid; place-items: center; width: 43px; height: 43px; border-radius: 50%; color: #080808; background: var(--gold); font-size: 24px; }
 .footer-brand strong { display: block; color: var(--white); font: 900 24px var(--heading); }
-.footer-brand small { display: block; text-transform: uppercase; letter-spacing: .12em; }
+.footer-brand small { display: block; color: var(--gold); text-transform: uppercase; letter-spacing: .12em; }
 .footer-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 17px; }
 .footer-links a { color: #aaa; text-decoration: none; font-size: 12px; }
 .footer-links a:hover { color: var(--gold); }
