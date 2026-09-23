@@ -4,6 +4,11 @@
   --brand-cream: #f8f2e7;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 body {
   background:
     radial-gradient(circle at 82% 18%, rgba(255, 208, 0, .12), transparent 24rem),
@@ -12,15 +17,15 @@ body {
 }
 
 .topbar {
-  height: 96px;
+  height: 104px;
   border-bottom-color: rgba(255, 208, 0, .22);
   background: rgba(7, 7, 7, .94);
   box-shadow: 0 12px 40px rgba(0, 0, 0, .36);
 }
 
 .brand img {
-  width: clamp(190px, 20vw, 270px);
-  height: 78px;
+  width: clamp(220px, 22vw, 310px);
+  height: 90px;
   filter: drop-shadow(0 7px 17px rgba(255, 187, 0, .18));
 }
 
@@ -363,12 +368,12 @@ body {
 
 @media (max-width: 620px) {
   .topbar {
-    height: 82px;
+    height: 86px;
   }
 
   .brand img {
-    width: 175px;
-    height: 66px;
+    width: 190px;
+    height: 72px;
   }
 
   .hero-stage {
