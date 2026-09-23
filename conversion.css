@@ -37,6 +37,7 @@ body {
   gap: clamp(34px, 6vw, 80px);
   padding-top: clamp(68px, 8vw, 108px);
   padding-bottom: 64px;
+  overflow: clip;
 }
 
 .hero-stage::before {
@@ -54,7 +55,7 @@ body {
   z-index: -1;
   width: 430px;
   height: 430px;
-  right: -120px;
+  right: 0;
   top: 45px;
   border: 1px solid rgba(255, 208, 0, .14);
   border-radius: 50%;
