@@ -168,7 +168,7 @@ function loginPage(params) {
   setTitle("Sign In", "Sign in to your WriterCut songwriter or approved industry account.");
   const from = params.get("from") || "/profile";
   const verified = params.get("verified") === "1";
-  return `<div class="auth-layout"><section class="auth-art"><p class="eyebrow">WELCOME BACK</p><h1>Put the song<br><span class="gold">back to work.</span></h1><p>One WriterCut account connects your song slots, catalog activity, demo credits, and private generated demos.</p></section><section class="auth-form-shell"><form class="auth-form" id="loginForm" data-from="${escapeHtml(from)}"><p class="eyebrow">ACCOUNT ACCESS</p><h2>Sign in</h2><p class="muted">Use the same email and password you use on WriterCut.</p>${verified ? `<p class="form-message success">Email verified. You can sign in now.</p>` : ""}<div class="form-grid"><div class="field"><label for="loginEmail">Email</label><input id="loginEmail" name="email" type="email" autocomplete="email" required></div><div class="field"><label for="loginPassword">Password</label><input id="loginPassword" name="password" type="password" autocomplete="current-password" minlength="8" required></div><div class="field"><label>Human verification</label><div id="loginTurnstile"></div></div><button class="button button-gold button-wide" type="submit" disabled>Enter WriterCut</button><p class="form-message" id="loginMessage" role="status"></p></div><p class="auth-switch">Need an account? <a href="#/signup?type=writer">Join free</a></p></form></section></div>`;
+  return `<div class="auth-layout"><section class="auth-art"><p class="eyebrow">WELCOME BACK</p><h1>Put the song<br><span class="gold">back to work.</span></h1><p>One WriterCut account connects your song slots, catalog activity, demo credits, and private generated demos.</p></section><section class="auth-form-shell"><form class="auth-form" id="loginForm" data-from="${escapeHtml(from)}"><p class="eyebrow">ACCOUNT ACCESS</p><h2>Sign in</h2><p class="muted">Use the same email and password you use on WriterCut.</p>${verified ? `<p class="form-message success">Email verified. You can sign in now.</p>` : ""}<div class="form-grid"><div class="field"><label for="loginEmail">Email</label><input id="loginEmail" name="email" type="email" autocomplete="email" required></div><div class="field"><label for="loginPassword">Password</label><input id="loginPassword" name="password" type="password" autocomplete="current-password" minlength="8" required></div><div class="field"><label>Human verification</label><div id="loginTurnstile"></div></div><button class="button button-gold button-wide" type="submit" disabled>Enter WriterCut</button><p class="form-message" id="loginMessage" role="status"></p></div>${IS_STAGING ? `<p class="auth-switch">Staging sign-in unavailable? <a href="${LIVE_SITE}/login">Open live sign-in</a></p>` : ""}<p class="auth-switch">Need an account? <a href="#/signup?type=writer">Join free</a></p></form></section></div>`;
 }
 
 function signupPage(params) {
@@ -319,7 +319,13 @@ function bindLogin() {
       action: "login",
       theme: "dark",
       callback: (token) => { captchaToken = token; button.disabled = false; showMessage(status, ""); },
-      "error-callback": () => { captchaToken = ""; button.disabled = true; showMessage(status, "Human verification failed. Please refresh and try again.", "error"); },
+      "error-callback": (code) => {
+        captchaToken = "";
+        button.disabled = true;
+        showMessage(status, code === "110200"
+          ? "Staging sign-in needs this hostname added to WriterCut’s Cloudflare verification settings. Please use the live WriterCut sign-in for now."
+          : "Human verification failed. Please refresh and try again.", "error");
+      },
       "expired-callback": () => { captchaToken = ""; button.disabled = true; showMessage(status, "Human verification expired. Please complete it again.", "error"); },
     });
   }).catch((error) => showMessage(status, error.message, "error"));
