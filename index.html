@@ -3,163 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Turn your original song into a private AI-assisted demo with WriterCut." />
-    <title>WriterCut Demo Builder</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23090909'/%3E%3Cpath d='M42 10v31.5c0 7-5.2 12.5-12 12.5-5.3 0-9-3.2-9-7.6 0-5 4.6-8.4 10.5-8.4 1.8 0 3.4.3 4.7.9V17.2L25 20.4V14z' fill='%23ffd000'/%3E%3C/svg%3E" />
+    <meta name="description" content="WriterCut connects serious songwriters and approved music-industry professionals." />
+    <meta name="theme-color" content="#070707" />
+    <title>WriterCut — Where Songs Find Artists</title>
+    <link rel="icon" type="image/svg+xml" href="./writercut-logo.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="./brand.css" />
-    <link rel="stylesheet" href="./conversion.css?v=4" />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./unified.css?v=1" />
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
-    <header class="topbar">
-      <a class="brand" href="https://writercut.com" aria-label="WriterCut home">
-        <img src="./writercut-piano-logo.webp" alt="WriterCut — Where songs find artists" />
+    <header class="site-header">
+      <a class="site-logo" href="#/" aria-label="WriterCut home">
+        <img src="./writercut-piano-logo.webp" alt="WriterCut" />
       </a>
-      <div class="top-actions">
-        <span class="test-badge">PRIVATE TEST</span>
-        <button class="ghost" id="signOutButton" type="button" hidden>Sign out</button>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteNav">Menu</button>
+      <nav class="site-nav" id="siteNav" aria-label="Primary navigation">
+        <a href="#/for-writers">For Writers</a>
+        <a href="#/for-industry">For Industry</a>
+        <a href="#/how-it-works">The Rule of 10</a>
+        <a href="#/pricing">Pricing</a>
+        <a href="#/demo-builder" class="nav-demo">Demo Builder</a>
+      </nav>
+      <div class="header-actions" id="headerActions">
+        <a class="button button-ghost" href="#/login">Sign in</a>
+        <a class="button button-gold" href="#/signup?type=writer">Join free</a>
       </div>
     </header>
 
-    <main>
-      <section class="hero hero-stage">
-        <div class="hero-copy">
-          <p class="eyebrow"><span aria-hidden="true">♫</span> WHERE SONGS FIND ARTISTS.</p>
-          <h1><span class="gold-text">You wrote</span> the song.<br />Now let it <span class="gold-text">be heard.</span></h1>
-          <p class="lede">WriterCut helps songwriters turn original, human-written lyrics and creative direction into a private, AI-assisted demo—up to four minutes—without replacing the songwriter, imitating an artist, or hiding how AI was used in the demo.</p>
-          <div class="hero-actions">
-            <a class="primary hero-cta" href="#authShell">Start your demo</a>
-            <p><strong>One demo: $4.99</strong><span>No subscription. No surprise renewal.</span></p>
-          </div>
-          <div class="hero-chips" aria-label="Demo Builder highlights">
-            <span>Human-written lyrics</span><span>Private output</span><span>Up to 4:00</span><span>AI demo disclosed</span><span>No artist imitation</span>
-          </div>
-        </div>
+    <main id="app" tabindex="-1"></main>
 
-        <aside class="hero-offer" aria-label="Ten demo credit offer">
-          <span class="offer-ribbon">BEST VALUE</span>
-          <p class="offer-kicker">10-DEMO CREDIT PACK</p>
-          <div class="offer-price"><sup>$</sup>39<small>.99</small></div>
-          <p class="offer-subhead">Ten private demos. Four dollars per song. Built to let the writing speak.</p>
-          <div class="offer-pulse"><strong>10</strong><span>SONGS.<br />READY TO BE HEARD.</span></div>
-          <ul>
-            <li>Up to four minutes per demo</li>
-            <li>Credits stay with your WriterCut account</li>
-            <li>Clear AI demo disclosure</li>
-          </ul>
-          <a class="primary offer-cta" href="#authShell">Sign in to get started</a>
-          <small>Purchasing remains locked during protected testing.</small>
-        </aside>
-      </section>
-
-      <div class="piano-strike" aria-hidden="true"><span></span></div>
-
-      <section class="notice" id="testNotice">
-        <strong>Protected test mode.</strong> The interface is live for review; purchasing and music generation stay locked until WriterCut approves activation.
-      </section>
-
-      <section class="auth-shell" id="authShell">
-        <div>
-          <p class="section-kicker">WRITERS ONLY</p>
-          <h2>Build the demo. Keep the song.</h2>
-          <p>Sign in with your WriterCut songwriter account. Your demo credits, files, and demo-production disclosures stay connected to your catalog.</p>
-        </div>
-        <form id="loginForm" class="login-form">
-          <label>Email<input id="email" name="email" type="email" autocomplete="email" required /></label>
-          <label>Password<input id="password" name="password" type="password" autocomplete="current-password" required minlength="8" /></label>
-          <button class="primary" type="submit">Enter the Demo Builder</button>
-          <p class="form-message" id="loginMessage" role="status"></p>
-        </form>
-      </section>
-
-      <div id="workspace" hidden>
-        <section class="account-strip">
-          <div><span>DEMO CREDITS</span><strong id="creditBalance">0</strong></div>
-          <p>One credit creates one demo. Technical failure? Your credit is returned automatically.</p>
-          <button class="ghost gold-border" id="jumpToCredits" type="button">Get credits</button>
-        </section>
-
-        <section class="builder-grid">
-          <form id="demoForm" class="panel form-panel">
-            <div class="panel-heading">
-              <div><p class="section-kicker">BUILD THE BRIEF</p><h2>Tell us how the song should move.</h2></div>
-              <span class="step">01</span>
-            </div>
-
-            <div class="field-grid two">
-              <label>Song title<input name="title" maxlength="200" required placeholder="Your working title" /></label>
-              <label>Target length
-                <select name="durationSeconds" required>
-                  <option value="120">2:00</option><option value="150">2:30</option><option value="180" selected>3:00</option><option value="210">3:30</option><option value="240">4:00 maximum</option>
-                </select>
-              </label>
-            </div>
-
-            <label>Original lyrics <span class="counter" id="lyricsCount">0 / 3,000</span>
-              <textarea name="lyrics" id="lyrics" rows="12" minlength="20" maxlength="3000" required placeholder="[Verse 1]&#10;Paste your original lyrics here…"></textarea>
-            </label>
-
-            <label>Melody, structure and musical direction <span class="counter" id="directionCount">0 / 1,200</span>
-              <textarea name="melodyDirection" id="melodyDirection" rows="5" minlength="20" maxlength="1200" required placeholder="Example: restrained first verse, rising pre-chorus, explosive hook; acoustic guitar into full band. Do not name an artist or request a real person's voice."></textarea>
-            </label>
-
-            <div class="field-grid four">
-              <label>Genre<select name="genre" required><option>Country</option><option>Pop</option><option>Rock</option><option>R&amp;B</option><option>Hip-hop</option><option>Folk</option><option>Gospel</option><option>Other</option></select></label>
-              <label>Mood<select name="mood" required><option>Heartfelt</option><option>Defiant</option><option>Hopeful</option><option>Dark</option><option>Joyful</option><option>Reflective</option></select></label>
-              <label>Tempo<select name="tempo" required><option>Slow</option><option selected>Mid-tempo</option><option>Up-tempo</option></select></label>
-              <label>Vocal<select name="vocalType" required><option>Male</option><option>Female</option><option>Duet</option><option>Instrumental</option></select></label>
-            </div>
-
-            <div class="field-grid two">
-              <label>Co-writers, if any<input name="coWriters" maxlength="500" placeholder="Names separated by commas" /></label>
-              <label>Sensitive themes, if any<input name="sensitiveThemeTypes" maxlength="500" placeholder="Optional: grief, addiction, violence…" /></label>
-            </div>
-
-            <div class="toggle-row">
-              <label class="toggle"><input type="checkbox" name="explicitContent" /><span></span> Contains explicit language</label>
-              <label class="toggle"><input type="checkbox" name="sensitiveThemes" /><span></span> Contains sensitive themes</label>
-            </div>
-
-            <div class="legal-box">
-              <p class="section-kicker">REQUIRED CERTIFICATIONS</p>
-              <h3>Protect the song. Protect the people.</h3>
-              <label><input type="checkbox" name="ownsInputsCertified" required /> I own or control the rights to every lyric and instruction I submitted.</label>
-              <label><input type="checkbox" name="coWriterAuthorityCertified" required /> I have every co-writer’s permission to create this demo.</label>
-              <label><input type="checkbox" name="noInfringementCertified" required /> My submission does not copy or infringe another person’s work.</label>
-              <label><input type="checkbox" name="noImpersonationCertified" required /> I am not requesting a real artist’s style, likeness, or voice.</label>
-              <label><input type="checkbox" name="acceptableUseCertified" required /> I will not use this tool for fraud, harassment, hate, exploitation, or illegal conduct.</label>
-              <label><input type="checkbox" name="aiDisclosureAccepted" required /> I accept that the result will be labeled as an AI-assisted demo.</label>
-              <label class="signature">Type your full legal name as your signature<input name="legalNameSignature" maxlength="255" required autocomplete="name" /></label>
-              <small>These confirmations are recorded with the request. They are not a transfer of your ownership to WriterCut.</small>
-            </div>
-
-            <button class="primary generate" id="generateButton" type="submit" disabled>Generate my demo · 1 credit</button>
-            <p class="form-message" id="demoMessage" role="status"></p>
-          </form>
-
-          <aside class="panel sidebar">
-            <div class="panel-heading"><div><p class="section-kicker">THE RESULT</p><h2>Your private demos.</h2></div><span class="step">02</span></div>
-            <div id="demoList" class="demo-list"><p class="empty">No demos yet. Your finished tracks will appear here.</p></div>
-            <div class="rules-card">
-              <strong>What a credit covers</strong>
-              <p>One generation up to four minutes. A creative revision uses another credit. A verified technical failure is refunded.</p>
-            </div>
-          </aside>
-        </section>
-
-        <section class="credits" id="credits">
-          <div class="credits-copy"><p class="section-kicker">NO SUBSCRIPTION</p><h2>Buy what you need.</h2><p>Credits do not expire while your WriterCut account remains active. No free generation and no surprise renewal.</p></div>
-          <article class="price-card"><span>ONE DEMO</span><strong>$4.99</strong><small>$4.99 per song</small><button class="primary checkout" data-package="single" type="button">Buy 1 credit</button></article>
-          <article class="price-card featured"><div class="best">BEST VALUE</div><span>TEN DEMOS</span><strong>$39.99</strong><small>$4.00 per song</small><button class="primary checkout" data-package="ten_pack" type="button">Buy 10 credits</button></article>
-        </section>
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <span class="music-key" aria-hidden="true">♫</span>
+        <div><strong>WriterCut</strong><small>Where songs find artists.</small></div>
       </div>
-    </main>
+      <div class="footer-links">
+        <a href="#/for-writers">Songwriters</a>
+        <a href="#/for-industry">Industry</a>
+        <a href="#/demo-builder">Demo Builder</a>
+        <a href="#/terms">Terms</a>
+        <a href="#/privacy">Privacy</a>
+        <a href="#/dmca">DMCA</a>
+      </div>
+      <p>© <span id="copyrightYear"></span> WriterCut. Human songs. Honest demos.</p>
+    </footer>
 
-    <footer><span>♫ WriterCut</span><p>Where songs find artists.</p><a href="https://writercut.com">Back to WriterCut</a></footer>
-    <script type="module" src="./app.js"></script>
+    <script type="module" src="./app.js?v=5"></script>
   </body>
 </html>
